@@ -1,10 +1,10 @@
 # Web Scraper
 
-This project is a web scraper built using Python and Selenium. It scrapes data from a specific website and performs automated tasks.
+This project is a web scraper built using Python. It scrapes data from a specific website and performs automated tasks.
 
 ## Prerequisites
 
-- Python 3.x
+- Python 3.7
 - Docker (optional)
 
 ## Installation
