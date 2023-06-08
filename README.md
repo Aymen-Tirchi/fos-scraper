@@ -53,3 +53,7 @@ This will execute the scraper inside the Docker container.
 ## Contributing
 
 Contributions are welcome! If you find any issues or want to add new features, feel free to open a pull request.
+
+## attention 
+
+you will face this error "Forbidden access" and "ERROR [object Object]," indicate that the website https://woolworths.com.au/ has implemented measures to prevent automated scraping.
