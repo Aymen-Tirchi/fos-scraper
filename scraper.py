@@ -1,44 +1,25 @@
-import requests
-import time
 from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
 from bs4 import BeautifulSoup
 
-chrome_options = Options()
-chrome_options.headless = True
+chrome_options = webdriver.ChromeOptions()
+chrome_options.add_argument('--headless')
+chrome_options.add_argument('--no-sandbox')
+
 driver = webdriver.Chrome(options=chrome_options)
 
-driver.implicitly_wait(60)  # seconds
+url = 'https://www.ouedkniss.com/automobiles/1'
+driver.get(url)
 
-url = "https://www.woolworths.com.au/shop/browse/drinks/cordials-juices-iced-teas/iced-teas"
+page_source = driver.page_source
 
-max_retries = 3
-retry_count = 0
-success = False
+soup = BeautifulSoup(page_source, 'html.parser')
 
-while not success and retry_count < max_retries:
-    try:
-        driver.get(url)
-        time.sleep(3)
+price_elements = soup.find_all('span', class_='price')
 
-        html_content = driver.page_source
-        soup = BeautifulSoup(html_content, "html.parser")
+prices = [element.get_text() for element in price_elements]
 
-        elements = soup.select(".shelfProductTile-description .shelfProductTile-descriptionContainer")
-
-        with open("results.txt", "w") as file:
-            for elt in elements:
-                text = elt.get_text(strip=True)
-                file.write(text + "\n")
-
-        success = True
-
-    except Exception as e:
-        print(f"Error occurred: {str(e)}")
-        retry_count += 1
-        time.sleep(5)  
-
-if retry_count == max_retries and not success:
-    print("Max retries reached. Unable to scrape the data.")
+with open('results.txt', 'w') as file:
+    for price in prices:
+        file.write(price + '\n')
 
 driver.quit()

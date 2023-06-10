@@ -1,6 +1,6 @@
 # Web Scraper
 
-This project is a web scraper built using Python. It scrapes data from a specific website and performs automated tasks.
+This project is a web scraper built using Python. It scrapes data from https://www.ouedkniss.com/automobiles/1 
 
 ## Prerequisites
 
@@ -53,9 +53,3 @@ This will execute the scraper inside the Docker container.
 ## Contributing
 
 Contributions are welcome! If you find any issues or want to add new features, feel free to open a pull request.
-
-## Attention
-
-Please note that running the scraper inside a Docker container may encounter webdriver issues due to compatibility between the container's environment and the Chrome browser.
-
-Additionally, the website https://woolworths.com.au/ has implemented measures to prevent automated scraping. You may encounter errors such as "Forbidden access" and "ERROR [object Object]." These errors indicate that the website is actively blocking automated scraping attempts.
